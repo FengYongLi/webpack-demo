@@ -20,6 +20,7 @@ module.exports = {
   ],
   module: {
     rules: [
+      ...base.module.rules,
       // 这里直接覆盖掉 base 中的 rules
       {
         test: /\.css$/i,

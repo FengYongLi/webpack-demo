@@ -18,6 +18,7 @@ module.exports = {
   mode: 'development',
   module: {
     rules: [
+      ...base.module.rules,
       {
         test: /\.css$/i,
         // 这个是把 css 变成 style 现在是发布环境
