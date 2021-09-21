@@ -4,14 +4,14 @@ import './z.less'
 import './s.styl'
 export default '导出 x.js 内容'
 // 引入图片
-import png from './assets/1.png';
-console.log(png)
+//import png from './assets/1.png';
+//console.log(png)
 
 const div = document.getElementById('app1')
 
-div.innerHTML = `
-  <img src="${png}">
-`
+//div.innerHTML = `
+//<img src="${png}">
+//`
 // 懒加载
 const button = document.createElement('button')
 button.innerText = '懒加载'
