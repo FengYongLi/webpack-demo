@@ -7,21 +7,24 @@ const path = require('path');
 const base = require('./webpack.config.base.js')
 
 module.exports = {
-  // 把 base 中的所有属性都复制过来
   ...base,
-  // 开发环境用到的
-  devtool: 'inline-source-map',
-  devServer: {
-    contentBase: './dist',
-  },
   // 两种编译模式 开发用还是发布用
-  mode: 'development',
+  mode: 'production',
+  plugins: [
+    // 这里继承 base 中的 plugin (new HtmlWebpackPlugin)
+    ...base.plugins,
+    new MiniCssExtractPlugin({
+      filename: "[name].[contenthash].css",
+      chunkFilename: "[id].[contenthash].css",
+    }),
+  ],
   module: {
     rules: [
+      // 这里直接覆盖掉 base 中的 rules
       {
         test: /\.css$/i,
-        // 这个是把 css 变成 style 现在是发布环境
-        use: ["style-loader", "css-loader"],
+        // 这里是生产环境，也就是发布环境。
+        use: [MiniCssExtractPlugin.loader, "css-loader"],
       },
     ],
   }
