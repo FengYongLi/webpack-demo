@@ -1,3 +1,5 @@
-import './x.scss'
+import './x.css'
 import './y.scss'
+import './z.less'
+import './s.styl'
 export default '导出 x.js 内容'
